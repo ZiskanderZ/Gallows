@@ -5,11 +5,11 @@ import time           #для преобразования в красивую �
 import os             #для очистки командной строки
 
 def getGamerInput(is_level, is_one_two):                          #функция для ввода
-    gamer_input = input()
-    if gamer_input.lower() == 'stop':                   #если нужно остановить игру
+    gamer_input = input().lower()
+    if gamer_input == 'stop':                   #если нужно остановить игру
         print('\nGoodbye')
         sys.exit(0)
-    elif gamer_input.lower() == 'save' and (not is_level) and (not is_one_two): #если нужно сохранить
+    elif gamer_input == 'save' and (not is_level) and (not is_one_two): #если нужно сохранить
         return gamer_input
     elif len(gamer_input) == 1:
         if gamer_input.isdigit() and 1 <= int(gamer_input) <= 3:     #выбор в самом начале
@@ -18,7 +18,7 @@ def getGamerInput(is_level, is_one_two):                          #функци�
             elif is_one_two and int(gamer_input) <= 2:    #выбор из двух ответов
                 return int(gamer_input)
         elif (not is_level) and (not is_one_two) and gamer_input.isalpha():
-            return gamer_input.lower()
+            return gamer_input
     print('Error, try again')
     return getGamerInput(is_level, is_one_two)
 
